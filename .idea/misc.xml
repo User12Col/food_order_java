@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_cart_screen.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_delivery_screen.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_login_screen.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_pay_screen.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_product_screen.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_signup_screen.xml" value="0.25" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/food_layout.xml" value="0.7707182320441989" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

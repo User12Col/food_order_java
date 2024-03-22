@@ -1,0 +1,6 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Trạng thái được chọn -->
+    <item android:drawable="@drawable/selected_image_border" android:state_selected="true" />
+    <!-- Trạng thái mặc định -->
+    <item android:drawable="@drawable/default_image_border" />
+</selector>
