@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodorder.R;
 import com.example.foodorder.models.Food;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -41,7 +42,9 @@ public class FoodDiscountAdapter extends RecyclerView.Adapter<FoodDiscountAdapte
         holder.txtFoodDescribe.setText(foods.get(position).getDescription());
         holder.txtFoodPrice.setText(String.valueOf(foods.get(position).getUnitPrice()));
 
-        holder.imgFood.setImageURI(Uri.parse(foods.get(position).getImage()));
+        Picasso.get().load(foods.get(position).getImage()).into(holder.imgFood);
+
+        //holder.imgFood.setImageURI(Uri.parse(foods.get(position).getImage()));
     }
 
     @Override
