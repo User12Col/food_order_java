@@ -21,29 +21,6 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/best_seller"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:onClick="changeFragment"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:background="@drawable/image_background_selector"
-                        android:src="@drawable/img_bestseller" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Bestseller"
-                        android:textColor="@color/text_color_selector" />
-                </LinearLayout>
-
-                <LinearLayout
                     android:id="@+id/sale"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -138,11 +115,18 @@
             </LinearLayout>
         </HorizontalScrollView>
     </LinearLayout>
-    <FrameLayout
-        android:layout_weight="1"
-        android:id="@+id/frame_layout_order"
+<!--    <FrameLayout-->
+<!--        android:layout_weight="1"-->
+<!--        android:id="@+id/frame_layout_order"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_below="@id/layout_order_head"-->
+<!--        />-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rclFoodByCategory"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/layout_order_head"
-        />
+        android:layout_height="wrap_content">
+
+    </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

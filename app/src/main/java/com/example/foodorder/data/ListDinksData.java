@@ -1,4 +1,4 @@
-package com.example.myapplication.data;
+package com.example.foodorder.data;
 
 public class ListDinksData {
     public String name;

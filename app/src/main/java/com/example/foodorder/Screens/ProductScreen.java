@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.example.foodorder.R;
 import com.example.foodorder.adapter.ListAdapter;
-import com.example.myapplication.data.ListDinksData;
+import com.example.foodorder.data.ListDinksData;
 import com.example.foodorder.databinding.ActivityProductScreenBinding;
 
 import java.util.ArrayList;

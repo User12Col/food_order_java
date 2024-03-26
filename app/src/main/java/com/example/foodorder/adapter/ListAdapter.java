@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.foodorder.R;
-import com.example.myapplication.data.ListDinksData;
+import com.example.foodorder.data.ListDinksData;
 
 import java.util.ArrayList;
 

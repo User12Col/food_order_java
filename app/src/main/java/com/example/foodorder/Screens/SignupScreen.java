@@ -46,7 +46,6 @@ public class SignupScreen extends AppCompatActivity {
         buttonToLoginScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Chuyển sang màn hình LoginScreen
                 Intent intent = new Intent(SignupScreen.this, LoginScreen.class);
                 startActivity(intent);
             }

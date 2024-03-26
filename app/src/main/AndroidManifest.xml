@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.foodorder">
 
-    <uses-permission android:name="android.permission.INTERNET">
-
-    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".storage.MyApplication"
@@ -13,12 +11,18 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:usesCleartextTraffic="true"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".Screens.AddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Screens.FoodDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".Screens.StartAppScreen"
             android:exported="true" />
@@ -35,24 +39,24 @@
             android:name=".Screens.ProductScreen"
             android:exported="false" />
         <activity
-            android:name=".Screens.MainActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            android:exported="true" >
+            android:name=".Screens.LoginScreen"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <activity-->
-<!--            android:name=".Screens.MainActivity"-->
-<!--            android:exported="true" />-->
+        <activity
+            android:name=".Screens.MainActivity"
+            android:exported="true" />
         <activity
             android:name=".Screens.SignupScreen"
             android:exported="true" />
-        <activity
-            android:name=".Screens.LoginScreen"
-            android:exported="true" />
+<!--        <activity-->
+<!--            android:name=".Screens.LoginScreen"-->
+<!--            android:exported="true" />-->
     </application>
 
 </manifest>
