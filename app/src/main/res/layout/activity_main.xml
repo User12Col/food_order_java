@@ -23,25 +23,25 @@
             android:contentDescription="Button 1"/>
 
         <!-- TextView -->
-        <TextView
-            android:id="@+id/text_button2"
+        <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:text="ĐỒ ĂN NÈ"
             android:textAlignment="center"
             android:gravity="center"
             android:textStyle="bold"
+            android:src="@drawable/logo_food"
             android:textSize="30dp" />
 
         <!-- ImageButton 3 -->
         <ImageButton
+            android:layout_gravity="center_vertical"
             android:id="@+id/image_button3"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="32dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_cart"
+            android:src="@drawable/shopping_cart_64px"
             android:contentDescription="Button 3"/>
     </LinearLayout>
 

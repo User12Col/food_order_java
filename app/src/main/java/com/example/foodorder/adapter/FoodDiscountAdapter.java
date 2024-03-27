@@ -56,7 +56,7 @@ public class FoodDiscountAdapter extends RecyclerView.Adapter<FoodDiscountAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtFoodName.setText(foods.get(position).getName());
         holder.txtFoodDescribe.setText(foods.get(position).getDescription());
-        holder.txtFoodPrice.setText(String.valueOf(foods.get(position).getUnitPrice()));
+        holder.txtFoodPrice.setText(String.valueOf((int)foods.get(position).getUnitPrice()));
 
         Picasso.get().load(foods.get(position).getImage()).into(holder.imgFood);
 

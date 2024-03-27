@@ -54,7 +54,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
         holder.txtFoodCartName.setText(carts.get(position).getFood().getName());
         holder.txtQuantityCart.setText(String.valueOf(carts.get(position).getQuantity()));
         Picasso.get().load(carts.get(position).getFood().getImage()).into(holder.imgFoodCart);
-        holder.txtFoodCartPrice.setText(String.valueOf(carts.get(position).getQuantity() * carts.get(position).getFood().getUnitPrice()));
+        holder.txtFoodCartPrice.setText(String.valueOf(carts.get(position).getQuantity() * (int)carts.get(position).getFood().getUnitPrice()));
 
         Food selectFood = carts.get(position).getFood();
         User user = DataLocalManager.getUser();

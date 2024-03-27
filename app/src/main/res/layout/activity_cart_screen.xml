@@ -57,7 +57,7 @@
                 android:layout_weight="1"
                 android:gravity="start"
                 android:textSize="20dp"
-                android:text="Total amount: "
+                android:text="Tổng tiền"
                 android:textColor="@color/black"/>
 
             <TextView

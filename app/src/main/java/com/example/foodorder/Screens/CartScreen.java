@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.foodorder.R;
@@ -34,7 +35,9 @@ public class CartScreen extends AppCompatActivity {
 
     private Button buttonOrder;
     private RecyclerView rclCart;
+    private TextView txtTotalPrice;
     List<Cart> carts;
+    int totalPrice =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,16 @@ public class CartScreen extends AppCompatActivity {
     private void reference(){
         rclCart = findViewById(R.id.rclCart);
         buttonOrder = findViewById(R.id.button_order);
+
+        txtTotalPrice = findViewById(R.id.txtTotalPriceCart);
+    }
+
+    private int calTotalPrice(List<Cart> carts){
+        int total = 0;
+        for (Cart cart : carts) {
+            total = total + (int)cart.getTotalPrice();
+        }
+        return total;
     }
 
     private void callApi(String userID){
@@ -97,6 +110,8 @@ public class CartScreen extends AppCompatActivity {
                         rclCart.setLayoutManager(verticalLayoutManagaer);
                         rclCart.setAdapter(cartAdapter);
 
+                        totalPrice = calTotalPrice(carts);
+                        txtTotalPrice.setText(String.valueOf(totalPrice));
                     }
                 });
     }
