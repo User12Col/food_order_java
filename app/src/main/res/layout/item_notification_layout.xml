@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/border_acc_infor"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtNotiContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="left"
+        android:textStyle="bold"
+        android:text="Sử dụng vị trí hiện tại"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/txtNotiDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="right"
+        android:textStyle="italic"
+        android:text="Sử dụng vị trí hiện tại"
+        android:textSize="14dp" />
+</LinearLayout>

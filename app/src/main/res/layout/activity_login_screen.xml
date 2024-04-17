@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:layout_weight="8"
+        android:layout_weight="8.5"
         >
         <TextView
             android:id="@+id/textView2"
@@ -40,7 +40,13 @@
             android:inputType="textEmailAddress" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/txtCheckEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:text="Error email"
+            android:visibility="invisible"/>
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Mật khẩu" />
@@ -52,19 +58,38 @@
             android:ems="10"
             android:hint="Nhập mật khẩu"
             android:inputType="textPassword" />
+        <TextView
+            android:id="@+id/txtCheckPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:text="Error email"
+            android:visibility="invisible"/>
+
+
+        <TextView
+            android:id="@+id/txtCheckLogin"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:text="Sai thông tin"
+            android:visibility="invisible"/>
 
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:text="Đăng nhập" />
+            android:background="@drawable/border_button"
+            android:text="Đăng nhập"
+            app:backgroundTint="@color/red_mix_pink" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="0.75">
         <TextView
             android:id="@+id/text_donot_have_account"
             android:layout_width="0dp"
@@ -78,9 +103,10 @@
             android:id="@+id/button_to_signupscreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="20dp"
+            android:background="@drawable/border_button"
             android:text="Đăng Ký"
-            android:textSize="10dp" />
+            android:textSize="10dp"
+            app:backgroundTint="@color/red_mix_pink" />
 
     </LinearLayout>
 
@@ -88,7 +114,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:layout_weight="1">
+        android:layout_weight="0.75">
         <TextView
             android:textAlignment="center"
             android:id="@+id/textView5"

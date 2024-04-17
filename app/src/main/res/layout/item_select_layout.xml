@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border_acc_infor"
+    android:padding="8dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imgSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/img_button_bestseller"
+        android:radius="20dp" />
+
+    <TextView
+        android:id="@+id/txtSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ƯU ĐÃI ĐẶC BIỆT"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+</LinearLayout>

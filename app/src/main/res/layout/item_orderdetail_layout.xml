@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/border_order_item"
+    android:weightSum="10">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:text="Tên"
+        android:textSize="14dp"
+        android:id="@+id/txtOrDeName"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:text="SL"
+        android:id="@+id/txtOrDeQuantity"
+        android:textAlignment="center"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:text="Giá"
+        android:id="@+id/txtOrDePrice"
+        android:gravity="right"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+</LinearLayout>

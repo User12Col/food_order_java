@@ -32,8 +32,8 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
     private Context context;
     private List<Cart> carts;
-    double quantity = 0;
     double price = 0;
+    double quantity = 0;
 
     public CartAdapter(Context context, List<Cart> carts) {
         this.context = context;
@@ -118,6 +118,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
                                 price = price + selectFood.getUnitPrice();
                                 holder.txtQuantityCart.setText(String.valueOf((int)quantity));
                                 holder.txtFoodCartPrice.setText(String.valueOf((int)price));
+                                notifyDataSetChanged();
                             }
                         });
             }
@@ -153,6 +154,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
                                     price = price - selectFood.getUnitPrice();
                                     holder.txtQuantityCart.setText(String.valueOf((int)quantity));
                                     holder.txtFoodCartPrice.setText(String.valueOf((int)price));
+                                    notifyDataSetChanged();
                                 }
                             });
                 } else if(quantity == 1){
@@ -179,6 +181,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
                                 public void onComplete() {
                                     quantity = quantity - 1;
                                     holder.txtQuantityCart.setText(String.valueOf((int)quantity));
+                                    notifyDataSetChanged();
                                 }
                             });
                 }

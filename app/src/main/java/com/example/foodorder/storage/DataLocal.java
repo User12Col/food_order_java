@@ -23,4 +23,12 @@ public class DataLocal {
         SharedPreferences sharedPreferences = context.getSharedPreferences(MY_DATA_LOCAL, Context.MODE_PRIVATE);
         return sharedPreferences.getString(key, "");
     }
+
+    public void deleteUser(String key){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(MY_DATA_LOCAL, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.remove(key);
+        editor.apply();
+    }
 }

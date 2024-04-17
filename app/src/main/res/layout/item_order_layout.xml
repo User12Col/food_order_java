@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border_order_item"
+    android:id="@+id/itemOrderLayout"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:weightSum="10">
+
+        <TextView
+            android:id="@+id/txtOrderID"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="#ID"
+            android:ellipsize="end"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtOrderDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="end"
+            android:text="14/10/2022">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:weightSum="10">
+
+            <ImageView
+                android:id="@+id/imgBackOfOrder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="1"
+                android:src="@drawable/location_20px"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:text="Giao đến"
+                android:textStyle="bold">
+
+            </TextView>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/txtAddress"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:text="TPHCM">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtOrderStatus"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:gravity="end"
+        android:textColor="@color/green"
+        android:text="TPHCM">
+
+    </TextView>
+
+</LinearLayout>

@@ -1,5 +1,8 @@
 package com.example.foodorder.fragment;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.graphics.Color;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -14,7 +17,9 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.foodorder.R;
+import com.example.foodorder.adapter.CategoryAdapter;
 import com.example.foodorder.adapter.FoodDiscountAdapter;
+import com.example.foodorder.api.CategoryApiService;
 import com.example.foodorder.api.FoodApiService;
 import com.example.foodorder.models.Category;
 import com.example.foodorder.models.Food;
@@ -35,7 +40,8 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class fragment_order extends Fragment {
 
     private List<Food> foods;
-    private RecyclerView rclFoodByCategory;
+    private List<Category> categories;
+    private RecyclerView rclFoodByCategory, rclCategory;
     private LinearLayout saleLayout, pizzaLayout, friedChickenLayout, burgerLayout;
 
     @Override
@@ -45,37 +51,9 @@ public class fragment_order extends Fragment {
 
         reference(rootView);
 
-        callApi(new Category(1, "Chicken"));
+        callApiGetCategory();
+        callApi(new Category(1, "Chicken",0));
 
-        saleLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callApi(new Category(1, "Chicken"));
-            }
-        });
-
-        pizzaLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callApi(new Category(2, "Discount"));
-            }
-        });
-
-        friedChickenLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callApi(new Category(3, "Combo"));
-            }
-        });
-
-        burgerLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callApi(new Category(4, "Burger"));
-            }
-        });
-
-        //changeFragment(new Menu_fragment_bestseller());
         return rootView;
     }
 
@@ -83,7 +61,7 @@ public class fragment_order extends Fragment {
         if(!foods.isEmpty()){
             foods.clear();
         }
-        FoodApiService.foodApiService.getFoodByCategory(category)
+        FoodApiService.foodApiService.getFoodByCategory(category.getCateID())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponeObject>() {
@@ -118,13 +96,60 @@ public class fragment_order extends Fragment {
                 });
     }
 
+    private void callApiGetCategory(){
+        CategoryApiService.categoryApiService.getAllCategory()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponeObject>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull ResponeObject responeObject) {
+                        Object data = responeObject.getData();
+                        if(data instanceof List<?>){
+                            Gson gson = new Gson();
+                            Type listType = new TypeToken<List<Category>>() {}.getType();
+                            categories = gson.fromJson(gson.toJson(data), listType);
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Toast.makeText(getActivity().getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        LinearLayoutManager horizontalLayout = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                        CategoryAdapter categoryAdapter = new CategoryAdapter(getActivity().getApplicationContext(), categories, new CategoryAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                if(position!=0){
+                                    int clickedPosition = rclCategory.getChildAdapterPosition(view);
+                                    int middlePosition = rclCategory.getChildCount() / 2;
+                                    int offset = clickedPosition - middlePosition;
+                                    rclCategory.smoothScrollToPosition(clickedPosition + offset);
+                                }
+                                callApi(categories.get(position));
+                            }
+                        });
+                        rclCategory.setLayoutManager(horizontalLayout);
+                        rclCategory.setAdapter(categoryAdapter);
+                    }
+                });
+    }
+
     private void reference(View view){
         rclFoodByCategory = view.findViewById(R.id.rclFoodByCategory);
+        rclCategory = view.findViewById(R.id.rclCategory);
 
-        saleLayout = view.findViewById(R.id.sale);
-        pizzaLayout = view.findViewById(R.id.pizza);
-        friedChickenLayout = view.findViewById(R.id.fried_chicken);
-        burgerLayout = view.findViewById(R.id.burger);
+//        saleLayout = view.findViewById(R.id.sale);
+//        pizzaLayout = view.findViewById(R.id.pizza);
+//        friedChickenLayout = view.findViewById(R.id.fried_chicken);
+//        burgerLayout = view.findViewById(R.id.burger);
 
         foods = new ArrayList<>();
     }

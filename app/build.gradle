@@ -34,7 +34,9 @@ android {
     buildFeatures {
         dataBinding = true
         viewBinding = true
+        buildConfig = true
     }
+
 }
 
 dependencies {
@@ -57,4 +59,10 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-storage:20.3.0'
     implementation 'com.squareup.picasso:picasso:2.8'
+
+    implementation 'com.google.android.gms:play-services-maps:18.2.0'
+    implementation 'com.google.android.libraries.places:places:3.4.0'
+    implementation 'com.google.android.gms:play-services-places:17.0.0'
+    implementation 'com.airbnb.android:lottie:3.4.0'
+
 }

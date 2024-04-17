@@ -11,6 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface FoodApiService {
     String baseUrl = "http://192.168.1.146:8082/api/v1/";
@@ -27,5 +28,5 @@ public interface FoodApiService {
     Observable<ResponeObject> getFoods();
 
     @POST("Foods/category")
-    Observable<ResponeObject> getFoodByCategory(@Body Category category);
+    Observable<ResponeObject> getFoodByCategory(@Query("cateID") int cateID);
 }

@@ -10,6 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface UserApiService {
@@ -29,4 +30,7 @@ public interface UserApiService {
 
     @POST("Users/signup")
     Observable<ResponeObject> signUp(@Body User user);
+
+    @PUT("Users/updateUser")
+    Observable<ResponeObject> updateUser(@Query("id") String id, @Body User user);
 }

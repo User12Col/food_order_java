@@ -4,6 +4,9 @@
     package="com.example.foodorder">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".storage.MyApplication"
@@ -14,9 +17,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+        android:theme="@style/Theme.FoodOrder"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".Screens.EditPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Screens.EditUserInforActivity"
+            android:exported="false" />
         <activity
             android:name=".Screens.AddressActivity"
             android:exported="false" />
@@ -31,17 +40,14 @@
             android:exported="false" />
         <activity
             android:name=".Screens.PayScreen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Screens.CartScreen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
-            android:name=".Screens.ProductScreen"
-            android:exported="false" />
-        <activity
-            android:name=".Screens.LoginScreen"
+            android:name=".Screens.SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+            android:theme="@style/Theme.FoodOrder">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -54,9 +60,19 @@
         <activity
             android:name=".Screens.SignupScreen"
             android:exported="true" />
-<!--        <activity-->
-<!--            android:name=".Screens.LoginScreen"-->
-<!--            android:exported="true" />-->
+        <activity
+            android:name=".Screens.LoginScreen"
+            android:exported="true" />
+        <activity
+            android:name=".Screens.ResultActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Screens.OrderDetailActivity"
+            android:exported="true" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA-7j-MqqDwYh80uVKoXkSOD1CpKynJlYE" />
     </application>
 
 </manifest>

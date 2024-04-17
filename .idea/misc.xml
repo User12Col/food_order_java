@@ -3,22 +3,43 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/drawable/border.xml" value="0.1975" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/drawable/border_acc_infor.xml" value="0.174" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/drawable/border_account_item.xml" value="0.145" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/drawable/border_order_item.xml" value="0.18" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/drawable/default_image_border.xml" value="0.1815" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/drawable/selected_image_border.xml" value="0.1885" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_address.xml" value="0.1859375" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_cart_screen.xml" value="0.25" />
-        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_delivery_screen.xml" value="0.2" />
-        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_food_detail.xml" value="0.2" />
-        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_login_screen.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_delivery_screen.xml" value="0.25" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_edit_password.xml" value="0.22" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_edit_user_infor.xml" value="0.33" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_food_detail.xml" value="0.24198250728862974" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_login_screen.xml" value="0.25" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_pay_screen.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_order_detail.xml" value="0.25" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_order_history.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_pay_screen.xml" value="0.18" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_product_screen.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_result.xml" value="0.2" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_signup_screen.xml" value="0.25" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_splash.xml" value="0.2" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_start_app_screen.xml" value="0.1" />
-        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/food_layout.xml" value="0.1" />
-        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/fragment_account.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/food_layout.xml" value="0.582701062215478" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/fragment_account.xml" value="0.22" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/fragment_home.xml" value="0.2" />
-        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/fragment_order.xml" value="0.36422613531047265" />
-        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/item_cart_layout.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/fragment_notification.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/fragment_order.xml" value="0.33" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/item_cart_layout.xml" value="0.25" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/item_category_layout.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/item_notification_layout.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/item_order_layout.xml" value="0.25" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/item_orderdetail_layout.xml" value="0.33" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/item_select_layout.xml" value="0.19895833333333332" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/list_item.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/loading_dialog.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/menu/menu_icon.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/menu/menu_navigation.xml" value="0.2" />
       </map>
     </option>
   </component>

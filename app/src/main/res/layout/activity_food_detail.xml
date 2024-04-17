@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
@@ -53,13 +54,15 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnDecrease"
+            android:id="@+id/btnFoodDetailDecrease"
             android:layout_width="46dp"
             android:layout_height="46dp"
-            android:text="-" />
+            android:background="@drawable/border_button"
+            android:text="-"
+            app:backgroundTint="@color/red_mix_pink" />
 
         <TextView
-            android:id="@+id/count_product"
+            android:id="@+id/txtFoodDetailQuantity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -68,10 +71,12 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/btnIncrease"
+            android:id="@+id/btnFoodDetailIncrease"
             android:layout_width="46dp"
             android:layout_height="46dp"
-            android:text="+" />
+            android:background="@drawable/border_button"
+            android:text="+"
+            app:backgroundTint="@color/red_mix_pink" />
     </LinearLayout>
 
 </LinearLayout>

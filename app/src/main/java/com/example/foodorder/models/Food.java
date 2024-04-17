@@ -7,17 +7,27 @@ public class Food {
     private String description;
     private String image;
     private Category category;
+    private int isDelete;
 
     public Food() {
     }
 
-    public Food(String foodID, String name, double unitPrice, String description, String image, Category category) {
+    public Food(String foodID, String name, double unitPrice, String description, String image, Category category, int isDelete) {
         this.foodID = foodID;
         this.name = name;
         this.unitPrice = unitPrice;
         this.description = description;
         this.image = image;
         this.category = category;
+        this.isDelete = 0;
+    }
+
+    public int getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(int isDelete) {
+        this.isDelete = isDelete;
     }
 
     public String getFoodID() {

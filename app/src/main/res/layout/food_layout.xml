@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@drawable/border_acc_infor"
+    android:layout_marginRight="8dp"
     android:id="@+id/foodItemLayout"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
     <LinearLayout
-        android:layout_margin="10dp"
-        android:layout_width="wrap_content"
+        android:layout_margin="6dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -28,6 +29,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/txtFoodName"
             android:text="COMBO1"
+            android:fontFamily="@font/mulish_regular"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -36,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtFoodDescribe"
+            android:fontFamily="@font/mulish_regular"
             android:text="1 Basket ‘O’ Fries\n1 Cheesy Garlic Bread\n1 Caesar Salad\n1 Famous Chicken Wings"
             android:textSize="12dp" />
 
@@ -44,6 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtFoodPrice"
+            android:fontFamily="@font/mulish_regular"
             android:text="109.000đ"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -56,7 +60,10 @@
                 android:id="@+id/btnDecrease"
                 android:layout_width="46dp"
                 android:layout_height="46dp"
-                android:text="-" />
+                android:background="@drawable/border_button"
+                android:text="-"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/red_mix_pink" />
 
             <TextView
                 android:id="@+id/txtQuantity"
@@ -71,7 +78,10 @@
                 android:id="@+id/btnIncrease"
                 android:layout_width="46dp"
                 android:layout_height="46dp"
-                android:text="+" />
+                android:background="@drawable/border_button"
+                android:text="+"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/red_mix_pink" />
         </LinearLayout>
     </LinearLayout>
 

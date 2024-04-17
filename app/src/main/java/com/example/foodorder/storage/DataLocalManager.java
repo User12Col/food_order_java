@@ -33,4 +33,8 @@ public class DataLocalManager {
         User user = gson.fromJson(jsonUser, User.class);
         return user;
     }
+
+    public static void deleteUser(String key){
+        DataLocalManager.getInstance().dataLocal.deleteUser(key);
+    }
 }
