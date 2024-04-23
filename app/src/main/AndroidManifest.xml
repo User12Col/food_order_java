@@ -21,6 +21,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Screens.SetPasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".Screens.EditPasswordActivity"
             android:exported="false" />
         <activity
@@ -32,9 +35,6 @@
         <activity
             android:name=".Screens.FoodDetailActivity"
             android:exported="false" />
-        <activity
-            android:name=".Screens.StartAppScreen"
-            android:exported="true" />
         <activity
             android:name=".Screens.DeliveryScreen"
             android:exported="false" />

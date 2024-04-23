@@ -22,6 +22,8 @@
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_pay_screen.xml" value="0.18" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_product_screen.xml" value="0.2" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_result.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_set_password.xml" value="0.33" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_settings.xml" value="0.2" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_signup_screen.xml" value="0.25" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_splash.xml" value="0.2" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_start_app_screen.xml" value="0.1" />
@@ -38,6 +40,7 @@
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/item_select_layout.xml" value="0.19895833333333332" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/list_item.xml" value="0.2" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/loading_dialog.xml" value="0.2" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/place_recycler_item_layout.xml" value="0.2" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/menu/menu_icon.xml" value="0.2" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/menu/menu_navigation.xml" value="0.2" />
       </map>

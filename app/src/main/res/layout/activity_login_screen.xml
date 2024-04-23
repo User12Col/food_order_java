@@ -121,10 +121,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18dp"
-            android:text="hoặc Đăng nhập bằng"/>
+            android:text="hoặc Đăng kí bằng"/>
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/imgSignUpGmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/google" />
