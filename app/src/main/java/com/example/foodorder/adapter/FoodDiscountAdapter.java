@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.foodorder.R;
 import com.example.foodorder.Screens.FoodDetailActivity;
 import com.example.foodorder.api.CartApiService;
+import com.example.foodorder.helper.Format;
 import com.example.foodorder.models.Cart;
 import com.example.foodorder.models.Food;
 import com.example.foodorder.models.ResponeObject;
@@ -36,7 +37,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class FoodDiscountAdapter extends RecyclerView.Adapter<FoodDiscountAdapter.ViewHolder>{
     private Context context;
     private List<Food> foods;
-    double quantity = 0;
+//    double quantity = 0;
 
     public FoodDiscountAdapter(Context context, List<Food> foods) {
         this.context = context;
@@ -56,9 +57,11 @@ public class FoodDiscountAdapter extends RecyclerView.Adapter<FoodDiscountAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtFoodName.setText(foods.get(position).getName());
         holder.txtFoodDescribe.setText(foods.get(position).getDescription());
-        holder.txtFoodPrice.setText(String.valueOf((int)foods.get(position).getUnitPrice()));
+        holder.txtFoodPrice.setText(Format.formatCurrency(foods.get(position).getUnitPrice()));
 
         Picasso.get().load(foods.get(position).getImage()).into(holder.imgFood);
+
+        double[] quantity = {0};
 
         Food selectFood = foods.get(position);
         User user = DataLocalManager.getUser();
@@ -76,7 +79,7 @@ public class FoodDiscountAdapter extends RecyclerView.Adapter<FoodDiscountAdapte
                     public void onNext(@NonNull ResponeObject responeObject) {
                         Object data = responeObject.getData();
                         if(data instanceof Double){
-                            quantity = (Double) data;
+                            quantity[0] = (Double) data;
                         }
                     }
 
@@ -87,7 +90,7 @@ public class FoodDiscountAdapter extends RecyclerView.Adapter<FoodDiscountAdapte
 
                     @Override
                     public void onComplete() {
-                        holder.txtQuantity.setText(String.valueOf((int)quantity));
+                        holder.txtQuantity.setText(String.valueOf((int) quantity[0]));
                     }
                 });
 
@@ -127,8 +130,8 @@ public class FoodDiscountAdapter extends RecyclerView.Adapter<FoodDiscountAdapte
 
                             @Override
                             public void onComplete() {
-                                quantity = quantity + 1.0;
-                                holder.txtQuantity.setText(String.valueOf((int)quantity));
+                                quantity[0] = quantity[0] + 1.0;
+                                holder.txtQuantity.setText(String.valueOf((int) quantity[0]));
                             }
                         });
             }
@@ -137,7 +140,7 @@ public class FoodDiscountAdapter extends RecyclerView.Adapter<FoodDiscountAdapte
         holder.btnDecrease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(quantity > 1){
+                if(quantity[0] > 1){
                     Cart cart = new Cart(selectFood, user, 1, selectFood.getUnitPrice());
                     CartApiService.cartApiService.decreaseQuantity(cart)
                             .subscribeOn(Schedulers.io())
@@ -160,11 +163,11 @@ public class FoodDiscountAdapter extends RecyclerView.Adapter<FoodDiscountAdapte
 
                                 @Override
                                 public void onComplete() {
-                                    quantity = quantity - 1.0;
-                                    holder.txtQuantity.setText(String.valueOf((int)quantity));
+                                    quantity[0] = quantity[0] - 1.0;
+                                    holder.txtQuantity.setText(String.valueOf((int) quantity[0]));
                                 }
                             });
-                } else if(quantity == 1){
+                } else if(quantity[0] == 1){
                     CartApiService.cartApiService.deleteFoodFromCart(selectFood.getFoodID(), user.getUserID())
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
@@ -186,8 +189,8 @@ public class FoodDiscountAdapter extends RecyclerView.Adapter<FoodDiscountAdapte
 
                                 @Override
                                 public void onComplete() {
-                                    quantity = quantity - 1.0;
-                                    holder.txtQuantity.setText(String.valueOf((int)quantity));
+                                    quantity[0] = quantity[0] - 1.0;
+                                    holder.txtQuantity.setText(String.valueOf((int) quantity[0]));
                                 }
                             });
                 }

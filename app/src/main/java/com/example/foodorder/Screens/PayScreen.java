@@ -157,13 +157,11 @@ public class PayScreen extends AppCompatActivity {
                     @Override
                     public void onComplete() {
                         LinearLayoutManager verticalLayoutManager = new LinearLayoutManager(PayScreen.this, LinearLayoutManager.VERTICAL, false);
-                        CartAdapter cartAdapter = new CartAdapter(PayScreen.this, carts);
+                        CartAdapter cartAdapter = new CartAdapter(PayScreen.this, carts, txtOrderPrice);
                         rclOrderFood.setLayoutManager(verticalLayoutManager);
                         rclOrderFood.setAdapter(cartAdapter);
 
-                        totalPrice = calTotalPrice(carts);
-                        txtOrderPrice.setText(String.valueOf(totalPrice));
-                        txtPayFee.setText(String.valueOf(totalPrice));
+                        //txtPayFee.setText(String.valueOf(totalPrice));
                     }
                 });
     }

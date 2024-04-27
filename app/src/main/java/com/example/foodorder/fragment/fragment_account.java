@@ -37,10 +37,10 @@ public class fragment_account extends Fragment {
         reference(view);
 
         User user = DataLocalManager.getUser();
-        txtUserEmail.setText(user.getEmail());
-        txtUserPhone.setText(user.getPhone());
-        txtUserAddress.setText(user.getAddress());
-        txtUserName.setText(user.getName());
+        checkEmpty(txtUserEmail, user.getEmail());
+        checkEmpty(txtUserPhone, user.getPhone());
+        checkEmpty(txtUserAddress, user.getAddress());
+        checkEmpty(txtUserName, user.getName());
 
         txtEditUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,5 +97,13 @@ public class fragment_account extends Fragment {
         txtUserEmail = view.findViewById(R.id.txtUserEmail);
         txtUserPhone = view.findViewById(R.id.txtUserPhone);
         txtEditUser = view.findViewById(R.id.txtEditUser);
+    }
+
+    private void checkEmpty(TextView textView, String content){
+        if(content.isEmpty()){
+            textView.setText("Chưa cập nhật");
+        } else{
+            textView.setText(content);
+        }
     }
 }

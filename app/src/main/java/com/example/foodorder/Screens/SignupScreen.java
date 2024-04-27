@@ -57,7 +57,7 @@ public class SignupScreen extends AppCompatActivity {
 
         user = new User();
 
-        validate();
+//        validate();
 
         buttonToLoginScreen.setOnClickListener(new View.OnClickListener() {
             @Override

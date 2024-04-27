@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -76,5 +77,6 @@ public class fragment_notification extends Fragment {
 
     private void reference(View view){
         rclNotification = view.findViewById(R.id.rclNotification);
+        notifications =  new ArrayList<>();
     }
 }

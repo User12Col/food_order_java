@@ -157,6 +157,7 @@
     </ScrollView>
 
     <LinearLayout
+        android:background="@drawable/border_acc_infor"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:weightSum="10"

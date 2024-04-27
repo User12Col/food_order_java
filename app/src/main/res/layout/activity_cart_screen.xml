@@ -70,7 +70,7 @@
                 android:layout_weight="1"
                 android:gravity="end"
                 android:textSize="20dp"
-                android:text="600,000đ"
+                android:text=""
                 android:textColor="@color/black"/>
         </LinearLayout>
 

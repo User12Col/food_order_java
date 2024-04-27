@@ -47,6 +47,7 @@ public class SetPasswordActivity extends AppCompatActivity {
         Gson gson = new Gson();
         User user = gson.fromJson(intent.getStringExtra("gmailUser"), User.class);
         txtHeader.setText("Chào, "+ user.getName()+", nhập mật khẩu cho tài khoản của bạn!");
+        user.setRole(new Role(2, "customer"));
 
         btnComplete.setOnClickListener(new View.OnClickListener() {
             @Override

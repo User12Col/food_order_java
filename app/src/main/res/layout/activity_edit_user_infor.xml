@@ -64,27 +64,6 @@
                 android:text="Error email"
                 android:visibility="invisible"/>
 
-            <TextView
-                android:id="@+id/txtEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="12dp"
-                android:text="Email" />
-
-            <EditText
-                android:id="@+id/edtNewEmail"
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:ems="10"
-                android:hint="Vui lòng nhập"
-                android:inputType="textEmailAddress" />
-            <TextView
-                android:id="@+id/txtCheckNewEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/red"
-                android:text="Error email"
-                android:visibility="invisible"/>
 
             <TextView
                 android:id="@+id/email_text"
@@ -113,6 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/red"
+                android:gravity="center"
                 android:text="Error email"
                 android:visibility="invisible"/>
 

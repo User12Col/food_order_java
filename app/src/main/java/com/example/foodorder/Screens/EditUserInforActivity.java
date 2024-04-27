@@ -27,8 +27,8 @@ import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class EditUserInforActivity extends AppCompatActivity {
-    private TextView txtCheckNewName, txtCheckNewEmail, txtCheckNewPhone, txtCheckUpdateUser;
-    private EditText edtNewFullName, edtNewEmail, edtNewPhone;
+    private TextView txtCheckNewName, txtCheckNewPhone, txtCheckUpdateUser;
+    private EditText edtNewFullName, edtNewPhone;
     private Button btnUpdate;
     String messgage = "";
 
@@ -43,16 +43,12 @@ public class EditUserInforActivity extends AppCompatActivity {
 
         User user = DataLocalManager.getUser();
         edtNewFullName.setText(user.getName());
-        edtNewEmail.setText(user.getEmail());
         edtNewPhone.setText(user.getPhone());
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!Validation.isValidEmail(edtNewEmail.getText().toString())){
-                    txtCheckUpdateUser.setVisibility(View.VISIBLE);
-                    txtCheckUpdateUser.setText("Email không hợp lệ");
-                } else if(!Validation.isValidName(edtNewFullName.getText().toString())){
+                if(!Validation.isValidName(edtNewFullName.getText().toString())){
                     txtCheckUpdateUser.setVisibility(View.VISIBLE);
                     txtCheckUpdateUser.setText("Tên không hợp lệ");
                 } else if(!Validation.isValidPhone(edtNewPhone.getText().toString())){
@@ -60,7 +56,6 @@ public class EditUserInforActivity extends AppCompatActivity {
                     txtCheckUpdateUser.setText("Số điện thoạikhông hợp lệ");
                 } else{
                     user.setName(edtNewFullName.getText().toString());
-                    user.setEmail(edtNewEmail.getText().toString());
                     user.setPhone(edtNewPhone.getText().toString());
                     callApiUpdate(user.getUserID(), user);
                 }
@@ -70,12 +65,10 @@ public class EditUserInforActivity extends AppCompatActivity {
 
     private void reference(){
         txtCheckNewName = findViewById(R.id.txtCheckNewName);
-        txtCheckNewEmail = findViewById(R.id.txtCheckNewEmail);
         txtCheckNewPhone = findViewById(R.id.txtCheckNewPhone);
         txtCheckUpdateUser = findViewById(R.id.txtCheckUpdateUser);
 
         edtNewFullName = findViewById(R.id.edtNewFullName);
-        edtNewEmail = findViewById(R.id.edtNewEmail);
         edtNewPhone = findViewById(R.id.edtNewPhone);
 
         btnUpdate = findViewById(R.id.btnUpdate);
@@ -96,29 +89,6 @@ public class EditUserInforActivity extends AppCompatActivity {
                     txtCheckNewName.setText("Tên không hợp lệ");
                 } else{
                     txtCheckNewName.setVisibility(View.INVISIBLE);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        edtNewEmail.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String email = charSequence.toString();
-                if(!Validation.isValidEmail(email)){
-                    txtCheckNewEmail.setVisibility(View.VISIBLE);
-                    txtCheckNewEmail.setText("Email không hợp lệ");
-                } else{
-                    txtCheckNewEmail.setVisibility(View.INVISIBLE);
                 }
             }
 

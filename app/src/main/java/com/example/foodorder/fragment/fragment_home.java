@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodorder.R;
 import com.example.foodorder.Screens.AddressActivity;
+import com.example.foodorder.Screens.TestActivity;
 import com.example.foodorder.adapter.FoodDiscountAdapter;
 import com.example.foodorder.adapter.ListSelectAdapter;
 import com.example.foodorder.api.FoodApiService;
@@ -56,11 +57,15 @@ public class fragment_home extends Fragment {
         reference(view);
 
         User user = DataLocalManager.getUser();
-        txtCurrAddress.setText(user.getAddress());
+        if(user.getAddress().isEmpty()){
+            txtCurrAddress.setText("Chọn địa chỉ giao hàng");
+        } else{
+            txtCurrAddress.setText(user.getAddress());
+        }
         itemHomeAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity().getApplicationContext(), AddressActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), TestActivity.class);
                 startActivity(intent);
             }
         });

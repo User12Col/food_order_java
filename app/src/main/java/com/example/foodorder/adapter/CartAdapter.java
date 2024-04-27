@@ -1,5 +1,6 @@
 package com.example.foodorder.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodorder.R;
 import com.example.foodorder.api.CartApiService;
+import com.example.foodorder.helper.Format;
 import com.example.foodorder.models.Cart;
 import com.example.foodorder.models.Food;
 import com.example.foodorder.models.ResponeObject;
@@ -30,14 +32,29 @@ import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
+    private TextView txtTotalPrice;
     private Context context;
     private List<Cart> carts;
-    double price = 0;
-    double quantity = 0;
+    double totalPrice = 0;
+//    double quantity = 0;
 
     public CartAdapter(Context context, List<Cart> carts) {
         this.context = context;
         this.carts = carts;
+    }
+
+    public CartAdapter(Context context, List<Cart> carts, TextView txtTotalPrice) {
+        this.context = context;
+        this.carts = carts;
+        this.txtTotalPrice = txtTotalPrice;
+    }
+
+    private int calTotalPrice(List<Cart> carts){
+        int total = 0;
+        for (Cart cart : carts) {
+            total = total + (int)cart.getTotalPrice();
+        }
+        return total;
     }
 
     @NonNull
@@ -50,16 +67,21 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        double[] price = {0};
+        price[0] = carts.get(position).getQuantity() * carts.get(position).getFood().getUnitPrice();
+        totalPrice = calTotalPrice(carts);
+        txtTotalPrice.setText(Format.formatCurrency(totalPrice));
+
         holder.txtFoodCartName.setText(carts.get(position).getFood().getName());
         holder.txtQuantityCart.setText(String.valueOf(carts.get(position).getQuantity()));
         Picasso.get().load(carts.get(position).getFood().getImage()).into(holder.imgFoodCart);
-        holder.txtFoodCartPrice.setText(String.valueOf(carts.get(position).getQuantity() * (int)carts.get(position).getFood().getUnitPrice()));
+        holder.txtFoodCartPrice.setText(Format.formatCurrency(price[0]));
 
         Food selectFood = carts.get(position).getFood();
         User user = DataLocalManager.getUser();
 
-        price = carts.get(position).getQuantity() * carts.get(position).getFood().getUnitPrice();
+        double[] quantity = {carts.get(position).getQuantity()};
 
         CartApiService.cartApiService.getQuantity(selectFood.getFoodID(), user.getUserID())
                 .subscribeOn(Schedulers.io())
@@ -74,7 +96,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
                     public void onNext(@NonNull ResponeObject responeObject) {
                         Object data = responeObject.getData();
                         if(data instanceof Double){
-                            quantity = (Double) data;
+                            quantity[0] = (Double) data;
                         }
                     }
 
@@ -85,7 +107,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
 
                     @Override
                     public void onComplete() {
-                        holder.txtQuantityCart.setText(String.valueOf((int)quantity));
+                        holder.txtQuantityCart.setText(String.valueOf((int) quantity[0]));
                     }
                 });
 
@@ -114,11 +136,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
 
                             @Override
                             public void onComplete() {
-                                quantity = quantity + 1;
-                                price = price + selectFood.getUnitPrice();
-                                holder.txtQuantityCart.setText(String.valueOf((int)quantity));
-                                holder.txtFoodCartPrice.setText(String.valueOf((int)price));
-                                notifyDataSetChanged();
+                                quantity[0] = quantity[0] + 1;
+                                price[0] = price[0] + selectFood.getUnitPrice();
+                                totalPrice = totalPrice + selectFood.getUnitPrice();
+                                holder.txtQuantityCart.setText(String.valueOf((int) quantity[0]));
+                                holder.txtFoodCartPrice.setText(Format.formatCurrency(price[0]));
+                                txtTotalPrice.setText(Format.formatCurrency(totalPrice));
                             }
                         });
             }
@@ -127,7 +150,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
         holder.btnDecreaseCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(quantity > 1){
+                if(quantity[0] > 1){
                     Cart cart = new Cart(selectFood, user, 1, selectFood.getUnitPrice());
                     CartApiService.cartApiService.decreaseQuantity(cart)
                             .subscribeOn(Schedulers.io())
@@ -150,14 +173,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
 
                                 @Override
                                 public void onComplete() {
-                                    quantity = quantity - 1;
-                                    price = price - selectFood.getUnitPrice();
-                                    holder.txtQuantityCart.setText(String.valueOf((int)quantity));
-                                    holder.txtFoodCartPrice.setText(String.valueOf((int)price));
-                                    notifyDataSetChanged();
+                                    quantity[0] = quantity[0] - 1;
+                                    price[0] = price[0] - selectFood.getUnitPrice();
+                                    totalPrice = totalPrice - selectFood.getUnitPrice();
+                                    holder.txtQuantityCart.setText(String.valueOf((int) quantity[0]));
+                                    holder.txtFoodCartPrice.setText(Format.formatCurrency(price[0]));
+                                    txtTotalPrice.setText(Format.formatCurrency(totalPrice));
                                 }
                             });
-                } else if(quantity == 1){
+                } else if(quantity[0] == 1){
                     CartApiService.cartApiService.deleteFoodFromCart(selectFood.getFoodID(), user.getUserID())
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
@@ -179,9 +203,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
 
                                 @Override
                                 public void onComplete() {
-                                    quantity = quantity - 1;
-                                    holder.txtQuantityCart.setText(String.valueOf((int)quantity));
+//                                    quantity[0] = quantity[0] - 1;
+//                                    holder.txtQuantityCart.setText(String.valueOf((int) quantity[0]));
+                                    carts.remove(position);
                                     notifyDataSetChanged();
+                                    txtTotalPrice.setText("");
                                 }
                             });
                 }

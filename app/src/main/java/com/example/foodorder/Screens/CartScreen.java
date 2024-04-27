@@ -60,8 +60,13 @@ public class CartScreen extends AppCompatActivity {
             public void onClick(View v) {
                 DialogHelper dialogHelper = new DialogHelper(CartScreen.this, dialog);
                 dialogHelper.showLoadingDialog();
-                Intent intent = new Intent(CartScreen.this, PayScreen.class);
-                startActivity(intent);
+                if(user.getAddress().isEmpty() || user.getPhone().isEmpty()){
+                    Toast.makeText(CartScreen.this, "Cập nhật địa chỉ và số điện thoại trước khi mua hàng", Toast.LENGTH_LONG).show();
+                } else{
+                    Intent intent = new Intent(CartScreen.this, PayScreen.class);
+                    startActivity(intent);
+                }
+
                 dialogHelper.dismissLoadingDialog();
             }
         });
@@ -82,14 +87,6 @@ public class CartScreen extends AppCompatActivity {
         txtTotalPrice = findViewById(R.id.txtTotalPriceCart);
 
         imgBack = findViewById(R.id.imgBack);
-    }
-
-    private int calTotalPrice(List<Cart> carts){
-        int total = 0;
-        for (Cart cart : carts) {
-            total = total + (int)cart.getTotalPrice();
-        }
-        return total;
     }
 
     private void callApi(String userID){
@@ -120,12 +117,12 @@ public class CartScreen extends AppCompatActivity {
                     @Override
                     public void onComplete() {
                         LinearLayoutManager verticalLayoutManagaer = new LinearLayoutManager(CartScreen.this, LinearLayoutManager.VERTICAL, false);
-                        CartAdapter cartAdapter = new CartAdapter(CartScreen.this, carts);
+                        CartAdapter cartAdapter = new CartAdapter(CartScreen.this, carts, txtTotalPrice);
                         rclCart.setLayoutManager(verticalLayoutManagaer);
                         rclCart.setAdapter(cartAdapter);
 
-                        totalPrice = calTotalPrice(carts);
-                        txtTotalPrice.setText(String.valueOf(totalPrice));
+//                        totalPrice = calTotalPrice(carts);
+//                        txtTotalPrice.setText(String.valueOf(totalPrice));
                     }
                 });
     }

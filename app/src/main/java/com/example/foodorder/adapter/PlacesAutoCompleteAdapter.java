@@ -75,12 +75,9 @@ public class PlacesAutoCompleteAdapter extends RecyclerView.Adapter<PlacesAutoCo
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 FilterResults results = new FilterResults();
-                // Skip the autocomplete query if no constraints are given.
                 if (constraint != null) {
-                    // Query the autocomplete API for the (constraint) search string.
                     mResultList = getPredictions(constraint);
                     if (mResultList != null) {
-                        // The API successfully returned results.
                         results.values = mResultList;
                         results.count = mResultList.size();
                     }
