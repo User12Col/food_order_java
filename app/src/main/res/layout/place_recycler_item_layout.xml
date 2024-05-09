@@ -8,24 +8,23 @@
         android:layout_height="wrap_content"
         android:weightSum="10"
         android:id="@+id/place_item_view"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/place_area"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_weight="5"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:textSize="18dp"
             android:textStyle="bold"
             android:padding="16dp"
             android:text="THÔNG TIN TÀI KHOẢN"/>
         <TextView
             android:id="@+id/place_address"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_weight="5"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:textSize="18dp"
-            android:textStyle="bold"
             android:padding="16dp"
             android:text="THÔNG TIN TÀI KHOẢN"/>
     </LinearLayout>

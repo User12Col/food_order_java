@@ -86,72 +86,6 @@
 
                 </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/border_acc_infor"
-                android:orientation="vertical"
-                android:padding="4dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="THÔNG TIN THANH TOÁN"
-                    android:textSize="20dp"
-                    android:textStyle="bold"></TextView>
-
-                <LinearLayout
-                    android:weightSum="10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="5"
-                        android:layout_marginTop="10dp"
-                        android:text="Tổng tiền: "
-                        android:textSize="20dp"></TextView>
-
-                    <TextView
-                        android:id="@+id/txtPayFee"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="5"
-                        android:layout_marginTop="10dp"
-                        android:text="100000"
-                        android:gravity="end"
-                        android:textSize="20dp"></TextView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:weightSum="10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="5"
-                        android:layout_marginTop="10dp"
-                        android:text="Phí giao hàng: "
-                        android:textSize="20dp"></TextView>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="5"
-                        android:layout_marginTop="10dp"
-                        android:gravity="end"
-                        android:text="0"
-                        android:textSize="20dp"></TextView>
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
@@ -166,6 +100,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:padding="4dp"
             android:orientation="vertical"
             android:layout_weight="4">
 

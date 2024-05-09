@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodorder.R;
+import com.example.foodorder.helper.Format;
 import com.example.foodorder.models.OrderDetail;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtOrDeName.setText(orderDetails.get(position).getFoods().getName());
-        holder.txtOrDePrice.setText(String.valueOf(orderDetails.get(position).getFoods().getUnitPrice() * orderDetails.get(position).getQuantity()));
+        holder.txtOrDePrice.setText(Format.formatCurrency(orderDetails.get(position).getFoods().getUnitPrice() * orderDetails.get(position).getQuantity()));
         holder.txtOrDeQuantity.setText("x"+String.valueOf(orderDetails.get(position).getQuantity()));
     }
 

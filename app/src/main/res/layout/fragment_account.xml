@@ -151,7 +151,7 @@
                 <LinearLayout
                     android:background="@drawable/border_account_item"
                     android:layout_margin="8dp"
-                    android:id="@+id/Social"
+                    android:id="@+id/itemSocial"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">

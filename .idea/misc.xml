@@ -8,6 +8,8 @@
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/drawable/border_account_item.xml" value="0.145" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/drawable/border_order_item.xml" value="0.18" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/drawable/default_image_border.xml" value="0.1815" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1445" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1445" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/drawable/selected_image_border.xml" value="0.1885" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_address.xml" value="0.1859375" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_cart_screen.xml" value="0.25" />
@@ -28,7 +30,8 @@
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_splash.xml" value="0.2" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_start_app_screen.xml" value="0.1" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/activity_test.xml" value="0.2" />
-        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/food_layout.xml" value="0.582701062215478" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/food_home_layout.xml" value="0.5" />
+        <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/food_layout.xml" value="0.5" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/fragment_account.xml" value="0.22" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/ChuongTrinh/Mobile/FoodOrder/app/src/main/res/layout/fragment_notification.xml" value="0.2" />

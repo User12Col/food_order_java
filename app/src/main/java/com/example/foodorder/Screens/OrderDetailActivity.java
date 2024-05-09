@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import com.example.foodorder.R;
 import com.example.foodorder.adapter.OrderDetailAdapter;
 import com.example.foodorder.api.OrderDetailApiService;
+import com.example.foodorder.helper.DialogHelper;
+import com.example.foodorder.helper.Format;
 import com.example.foodorder.models.Cart;
 import com.example.foodorder.models.OrderDetail;
 import com.example.foodorder.models.ResponeObject;
@@ -31,6 +34,7 @@ public class OrderDetailActivity extends AppCompatActivity {
     private TextView txtUserName, txtAddress, txtUserEmail, txtUserPhone, txtOrderID, txtOrderTotalPrice, txtPayPrice;
     private RecyclerView rclOrderDetail;
     private List<OrderDetail> orderDetails;
+    private Dialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +43,10 @@ public class OrderDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String orderID = intent.getStringExtra("orderID");
+        DialogHelper dialogHelper = new DialogHelper(OrderDetailActivity.this, dialog);
+        dialogHelper.showLoadingDialog();
         callApi(orderID);
+        dialogHelper.dismissLoadingDialog();
 
     }
 
@@ -88,8 +95,8 @@ public class OrderDetailActivity extends AppCompatActivity {
                         txtUserEmail.setText(user.getEmail());
                         txtUserPhone.setText(user.getPhone());
                         txtOrderID.setText(orderDetails.get(0).getOrder().getOrderID());
-                        txtOrderTotalPrice.setText(String.valueOf(orderDetails.get(0).getOrder().getTotalPrice()));
-                        txtPayPrice.setText(String.valueOf(orderDetails.get(0).getOrder().getTotalPrice()));
+                        txtOrderTotalPrice.setText(Format.formatCurrency(orderDetails.get(0).getOrder().getTotalPrice()));
+                        txtPayPrice.setText(Format.formatCurrency(orderDetails.get(0).getOrder().getTotalPrice()));
 
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(OrderDetailActivity.this, LinearLayoutManager.VERTICAL, false);
                         OrderDetailAdapter orderDetailAdapter = new OrderDetailAdapter(OrderDetailActivity.this, orderDetails);

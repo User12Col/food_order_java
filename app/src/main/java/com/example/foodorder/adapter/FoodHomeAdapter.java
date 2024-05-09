@@ -1,17 +1,21 @@
-package com.example.foodorder.Screens;
+package com.example.foodorder.adapter;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.foodorder.R;
+import com.example.foodorder.Screens.FoodDetailActivity;
 import com.example.foodorder.api.CartApiService;
 import com.example.foodorder.helper.Format;
 import com.example.foodorder.models.Cart;
@@ -22,39 +26,46 @@ import com.example.foodorder.storage.DataLocalManager;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class FoodDetailActivity extends AppCompatActivity {
+public class FoodHomeAdapter extends RecyclerView.Adapter<FoodHomeAdapter.ViewHolder>{
+    private Context context;
+    private List<Food> foods;
+//    double quantity = 0;
 
-    private ImageView imgFoodDetail;
-    private TextView txtFoodNameDetail, txtFoodDescribeDetail, txtFoodPriceDetail, txtFoodDetailQuantity;
-    private Button btnFoodDetailIncrease, btnFoodDetailDecrease;
+    public FoodHomeAdapter(Context context, List<Food> foods) {
+        this.context = context;
+        this.foods = foods;
+    }
 
-    double quantity = 0;
-    double price = 0;
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View heroView = inflater.inflate(R.layout.food_home_layout, parent, false);
+        ViewHolder viewHolder = new ViewHolder(heroView);
+        return viewHolder;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_food_detail);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.txtFoodName.setText(foods.get(position).getName());
+        holder.txtFoodDescribe.setText(foods.get(position).getDescription());
+        holder.txtFoodPrice.setText(Format.formatCurrency(foods.get(position).getUnitPrice()));
 
-        reference();
+        Picasso.get().load(foods.get(position).getImage()).into(holder.imgFood);
 
-        Intent intent = getIntent();
-        Gson gson = new Gson();
-        Food food = gson.fromJson(intent.getStringExtra("food"), Food.class);
+        double[] quantity = {0};
 
-        Picasso.get().load(food.getImage()).into(imgFoodDetail);
-        txtFoodNameDetail.setText(food.getName());
-        txtFoodDescribeDetail.setText(food.getDescription());
-        txtFoodPriceDetail.setText(Format.formatCurrency(food.getUnitPrice()));
-
+        Food selectFood = foods.get(position);
         User user = DataLocalManager.getUser();
 
-        CartApiService.cartApiService.getQuantity(food.getFoodID(), user.getUserID())
+        CartApiService.cartApiService.getQuantity(selectFood.getFoodID(), user.getUserID())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponeObject>() {
@@ -67,7 +78,7 @@ public class FoodDetailActivity extends AppCompatActivity {
                     public void onNext(@NonNull ResponeObject responeObject) {
                         Object data = responeObject.getData();
                         if(data instanceof Double){
-                            quantity = (Double) data;
+                            quantity[0] = (Double) data;
                         }
                     }
 
@@ -78,14 +89,25 @@ public class FoodDetailActivity extends AppCompatActivity {
 
                     @Override
                     public void onComplete() {
-                        txtFoodDetailQuantity.setText(String.valueOf((int)quantity));
+                        holder.txtQuantity.setText(String.valueOf((int) quantity[0]));
                     }
                 });
 
-        btnFoodDetailIncrease.setOnClickListener(new View.OnClickListener() {
+        holder.foodItemLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Cart cart = new Cart(food, user, 1, food.getUnitPrice());
+                Gson gson = new Gson();
+                Intent intent = new Intent(context.getApplicationContext(), FoodDetailActivity.class);
+                intent.putExtra("food", gson.toJson(selectFood));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
+
+        holder.btnIncrease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Cart cart = new Cart(selectFood, user, 1, selectFood.getUnitPrice());
                 CartApiService.cartApiService.addToCart(cart)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -102,23 +124,23 @@ public class FoodDetailActivity extends AppCompatActivity {
 
                             @Override
                             public void onError(@NonNull Throwable e) {
-                                Toast.makeText(FoodDetailActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onComplete() {
-                                quantity = quantity + 1.0;
-                                txtFoodDetailQuantity.setText(String.valueOf((int)quantity));
+                                quantity[0] = quantity[0] + 1.0;
+                                holder.txtQuantity.setText(String.valueOf((int) quantity[0]));
                             }
                         });
             }
         });
 
-        btnFoodDetailDecrease.setOnClickListener(new View.OnClickListener() {
+        holder.btnDecrease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(quantity > 1){
-                    Cart cart = new Cart(food, user, 1, food.getUnitPrice());
+                if(quantity[0] > 1){
+                    Cart cart = new Cart(selectFood, user, 1, selectFood.getUnitPrice());
                     CartApiService.cartApiService.decreaseQuantity(cart)
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
@@ -135,17 +157,17 @@ public class FoodDetailActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onError(@NonNull Throwable e) {
-                                    Toast.makeText(FoodDetailActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
                                 }
 
                                 @Override
                                 public void onComplete() {
-                                    quantity = quantity - 1.0;
-                                    txtFoodDetailQuantity.setText(String.valueOf((int)quantity));
+                                    quantity[0] = quantity[0] - 1.0;
+                                    holder.txtQuantity.setText(String.valueOf((int) quantity[0]));
                                 }
                             });
-                } else if(quantity == 1){
-                    CartApiService.cartApiService.deleteFoodFromCart(food.getFoodID(), user.getUserID())
+                } else if(quantity[0] == 1){
+                    CartApiService.cartApiService.deleteFoodFromCart(selectFood.getFoodID(), user.getUserID())
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(new Observer<ResponeObject>() {
@@ -161,30 +183,46 @@ public class FoodDetailActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onError(@NonNull Throwable e) {
-                                    Toast.makeText(FoodDetailActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
                                 }
 
                                 @Override
                                 public void onComplete() {
-                                    quantity = quantity - 1.0;
-                                    txtFoodDetailQuantity.setText(String.valueOf((int)quantity));
+                                    quantity[0] = quantity[0] - 1.0;
+                                    holder.txtQuantity.setText(String.valueOf((int) quantity[0]));
                                 }
                             });
                 }
             }
         });
+
     }
 
-    private void reference(){
-        imgFoodDetail = findViewById(R.id.imgFoodDetail);
+    @Override
+    public int getItemCount() {
+        return foods.size();
+    }
 
-        txtFoodNameDetail = findViewById(R.id.txtFoodNameDetail);
-        txtFoodDescribeDetail = findViewById(R.id.txtFoodDescribeDetail);
-        txtFoodPriceDetail = findViewById(R.id.txtFoodPriceDetail);
-        txtFoodDetailQuantity = findViewById(R.id.txtFoodDetailQuantity);
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        private TextView txtFoodName, txtFoodDescribe, txtFoodPrice, txtQuantity;
+        private Button btnDecrease, btnIncrease;
+        private ImageView imgFood;
+        private LinearLayout foodItemLayout;
 
-        btnFoodDetailDecrease = findViewById(R.id.btnFoodDetailDecrease);
-        btnFoodDetailIncrease = findViewById(R.id.btnFoodDetailIncrease);
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            txtFoodName = itemView.findViewById(R.id.txtFoodName);
+            txtFoodDescribe = itemView.findViewById(R.id.txtFoodDescribe);
+            txtFoodPrice = itemView.findViewById(R.id.txtFoodPrice);
+            txtQuantity = itemView.findViewById(R.id.txtQuantity);
 
+            btnDecrease = itemView.findViewById(R.id.btnDecrease);
+            btnIncrease = itemView.findViewById(R.id.btnIncrease);
+
+            imgFood = itemView.findViewById(R.id.imgFood);
+
+            foodItemLayout = itemView.findViewById(R.id.foodItemLayout);
+
+        }
     }
 }

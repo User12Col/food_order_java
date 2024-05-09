@@ -16,7 +16,7 @@ import retrofit2.http.Query;
 public interface UserApiService {
 
     //http://localhost:8082/api/v1/Users/email=kiet@gmail.com&password=pass123456
-    String baseUrl = "http://192.168.1.146:8082/api/v1/";
+    String baseUrl = "http://172.20.10.4:8082/api/v1/";
     UserApiService userApiService = new Retrofit.Builder()
             .baseUrl(baseUrl)
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())

@@ -22,8 +22,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:layout_marginTop="8dp"
         android:text="COMBO1"
-        android:textSize="30dp"
+        android:textSize="22dp"
         android:textStyle="bold" />
 
     <!-- Thông tin -->
@@ -32,8 +33,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
+        android:layout_marginTop="8dp"
         android:text="1 Basket ‘O’ Fries\n1 Cheesy Garlic Bread\n1 Caesar Salad\n1 Famous Chicken Wings"
-        android:textSize="20dp" />
+        android:textSize="16dp" />
 
     <!-- Giá -->
     <TextView

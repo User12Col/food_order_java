@@ -62,6 +62,8 @@ public class CartScreen extends AppCompatActivity {
                 dialogHelper.showLoadingDialog();
                 if(user.getAddress().isEmpty() || user.getPhone().isEmpty()){
                     Toast.makeText(CartScreen.this, "Cập nhật địa chỉ và số điện thoại trước khi mua hàng", Toast.LENGTH_LONG).show();
+                } else if(carts.size() == 0){
+                    Toast.makeText(CartScreen.this, "Chọn món ăn trước khi mua hàng", Toast.LENGTH_LONG).show();
                 } else{
                     Intent intent = new Intent(CartScreen.this, PayScreen.class);
                     startActivity(intent);

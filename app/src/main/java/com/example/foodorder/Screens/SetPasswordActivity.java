@@ -30,7 +30,7 @@ import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class SetPasswordActivity extends AppCompatActivity {
-    private TextView txtHeader;
+    private TextView txtHeader, txtCheckUpdatePass;
     private Button btnComplete;
     private EditText edtGmailPass;
     private Dialog dialog;
@@ -62,6 +62,7 @@ public class SetPasswordActivity extends AppCompatActivity {
         txtHeader = findViewById(R.id.txtHeader);
         btnComplete = findViewById(R.id.btnComplete);
         edtGmailPass = findViewById(R.id.edtGmailPassword);
+        txtCheckUpdatePass = findViewById(R.id.txtCheckUpdatePass);
     }
 
     private void callApiSignUp(User user){
@@ -110,9 +111,12 @@ public class SetPasswordActivity extends AppCompatActivity {
                             startActivity(intent);
                             dialogHelper.dismissLoadingDialog();
 
+                        } else if(message.equals("User has same email")){
+                            txtCheckUpdatePass.setVisibility(View.VISIBLE);
+                            txtCheckUpdatePass.setText("Tài khoản đã tồn tại");
+                            dialogHelper.dismissLoadingDialog();
+
                         } else{
-//                            txtCheckSignUp.setVisibility(View.VISIBLE);
-//                            txtCheckSignUp.setText("");
                             Toast.makeText(SetPasswordActivity.this, "Fail", Toast.LENGTH_LONG).show();
                         }
                     }

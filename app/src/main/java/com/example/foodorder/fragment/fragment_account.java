@@ -2,6 +2,7 @@ package com.example.foodorder.fragment;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +25,7 @@ import com.example.foodorder.models.User;
 import com.example.foodorder.storage.DataLocalManager;
 
 public class fragment_account extends Fragment {
-    private LinearLayout itemAddress, itemLogOut, itemOrder, itemEditPass;
+    private LinearLayout itemAddress, itemLogOut, itemOrder, itemEditPass, itemSocial;
     private TextView txtUserName, txtUserEmail, txtUserAddress, txtUserPhone, txtEditUser;
     private Dialog dialog;
 
@@ -83,6 +84,15 @@ public class fragment_account extends Fragment {
             }
         });
 
+        itemSocial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String facebookUrl = "https://www.facebook.com/votrantan.loc";
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(facebookUrl));
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 
@@ -91,6 +101,7 @@ public class fragment_account extends Fragment {
         itemLogOut = view.findViewById(R.id.itemLogOut);
         itemOrder = view.findViewById(R.id.itemOrder);
         itemEditPass = view.findViewById(R.id.itemEditPass);
+        itemSocial = view.findViewById(R.id.itemSocial);
 
         txtUserAddress = view.findViewById(R.id.txtUserAddress);
         txtUserName = view.findViewById(R.id.txtUserName);

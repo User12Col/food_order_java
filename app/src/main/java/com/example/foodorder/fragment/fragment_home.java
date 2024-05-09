@@ -19,8 +19,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodorder.R;
 import com.example.foodorder.Screens.AddressActivity;
+import com.example.foodorder.Screens.MainActivity;
 import com.example.foodorder.Screens.TestActivity;
 import com.example.foodorder.adapter.FoodDiscountAdapter;
+import com.example.foodorder.adapter.FoodHomeAdapter;
 import com.example.foodorder.adapter.ListSelectAdapter;
 import com.example.foodorder.api.FoodApiService;
 import com.example.foodorder.models.Category;
@@ -47,7 +49,7 @@ public class fragment_home extends Fragment {
     private int currentValue = 0;
     private RecyclerView rclDiscount;
     private List<Food> foodsDiscount;
-    private TextView txtCurrAddress;
+    private TextView txtCurrAddress, txtViewAllDiscount;
     private LinearLayout itemHomeAddress;
 
     @Override
@@ -65,7 +67,16 @@ public class fragment_home extends Fragment {
         itemHomeAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity().getApplicationContext(), TestActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), AddressActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        txtViewAllDiscount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
+                intent.putExtra("tab", "order");
                 startActivity(intent);
             }
         });
@@ -99,9 +110,9 @@ public class fragment_home extends Fragment {
                     @Override
                     public void onComplete() {
                         LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-                        FoodDiscountAdapter foodDiscountAdapter = new FoodDiscountAdapter(getActivity().getApplicationContext(), foodsDiscount);
+                        FoodHomeAdapter foodHomeAdapter = new FoodHomeAdapter(getActivity().getApplicationContext(), foodsDiscount);
                         rclDiscount.setLayoutManager(horizontalLayoutManagaer);
-                        rclDiscount.setAdapter(foodDiscountAdapter);
+                        rclDiscount.setAdapter(foodHomeAdapter);
                     }
                 });
 
@@ -112,5 +123,6 @@ public class fragment_home extends Fragment {
         rclDiscount = view.findViewById(R.id.rclDiscount);
         txtCurrAddress = view.findViewById(R.id.txtCurrAddress);
         itemHomeAddress = view.findViewById(R.id.itemHomeAddress);
+        txtViewAllDiscount = view.findViewById(R.id.txtViewAllDiscount);
     }
 }

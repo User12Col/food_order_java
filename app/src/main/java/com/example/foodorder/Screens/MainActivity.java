@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         imageButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Chuyển hướng đến OrderScreen
                 Intent intent = new Intent(MainActivity.this, CartScreen.class);
                 startActivity(intent);
             }
@@ -57,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
+
+        String selectedTab = getIntent().getStringExtra("tab");
+        if (selectedTab != null && selectedTab.equals("order")) {
+            replaceFragment(new fragment_order());
+        }
     }
 
     private void replaceFragment(Fragment fragment) {

@@ -14,7 +14,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface CartApiService {
-    String baseUrl = "http://192.168.1.146:8082/api/v1/";
+    String baseUrl = "http://172.20.10.4:8082/api/v1/";
 
     CartApiService cartApiService = new Retrofit.Builder()
             .baseUrl(baseUrl)
@@ -37,5 +37,8 @@ public interface CartApiService {
 
     @DELETE("Carts/delete")
     Observable<ResponeObject> deleteFoodFromCart(@Query("foodID") String foodID, @Query("userID") String userID);
+
+    @DELETE("Carts/deleteUserCart")
+    Observable<ResponeObject> deleteUserCart(@Query("userID") String userID);
 
 }

@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 
 public interface CategoryApiService {
-    String baseUrl = "http://192.168.1.146:8082/api/v1/";
+    String baseUrl = "http://172.20.10.4:8082/api/v1/";
 
     CategoryApiService categoryApiService = new Retrofit.Builder()
             .baseUrl(baseUrl)

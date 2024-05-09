@@ -89,6 +89,12 @@ public class fragment_order extends Fragment {
                     public void onComplete() {
                         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 2);
                         FoodDiscountAdapter foodDiscountAdapter = new FoodDiscountAdapter(getActivity().getApplicationContext(), foods);
+                        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                            @Override
+                            public int getSpanSize(int position) {
+                                return 1;
+                            }
+                        });
                         rclFoodByCategory.setLayoutManager(gridLayoutManager);
                         rclFoodByCategory.setAdapter(foodDiscountAdapter);
 
